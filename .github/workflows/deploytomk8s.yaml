@@ -19,8 +19,6 @@ jobs:
       - uses: Azure/k8s-deploy@v1.3
         with:
           manifests: |
-            deployment.yaml
-            manifests/deployment.yaml
             manifests\deployment.yaml
           kubectl-version: 'v1.20.0'
         id: deploy
