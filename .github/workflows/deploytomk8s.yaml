@@ -15,7 +15,7 @@ jobs:
       - uses: azure/setup-kubectl@v1
         with:
           version: 'v1.20.0' # default is latest stable
-        id: install kubectl
+        id: install
       - uses: Azure/k8s-deploy@v1.3
         with:
           manifests: |
