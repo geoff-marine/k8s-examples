@@ -19,7 +19,7 @@ jobs:
       - uses: Azure/k8s-deploy@v1.3
         with:
           namespace: 'nginx'
-          manifests:
-            nginx-deployment.yaml
+          manifests: |
+            manifests/nginx-deployment.yaml
           kubectl-version: 'v1.20.0'
         id: deploy  
