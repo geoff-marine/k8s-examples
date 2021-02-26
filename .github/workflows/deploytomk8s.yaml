@@ -1,0 +1,25 @@
+name: push to mk8s
+
+on: [push]
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: <your kubeconfig> # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
+          context: <context name>  #If left unspecified, current-context from kubeconfig is used as default
+        id: setcontext
+      - uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.20.0' # default is latest stable
+        id: install  
+      - uses: Azure/k8s-deploy@v1
+        with:
+          namespace: 'nginx'
+          manifests: |
+            nginx-deployment.yaml
+          kubectl-version: 'v1.20.0'
