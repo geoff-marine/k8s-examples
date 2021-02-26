@@ -20,5 +20,6 @@ jobs:
         with:
           namespace: 'nginx'
           manifests: |
-            nginx-deployment.yaml
+            geoff-marine/k8s-examples/nginx-deployment.yaml
           kubectl-version: 'v1.20.0'
+        id: deploy  
