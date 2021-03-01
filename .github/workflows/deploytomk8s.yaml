@@ -27,6 +27,7 @@ jobs:
         id: setcontext              
       - uses: Azure/k8s-deploy@v1.3
         with:
+          namespace: default
           manifests: |
             deployment.yaml  
           kubectl-version: 'v1.20.0'
