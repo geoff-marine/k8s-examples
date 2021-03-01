@@ -13,6 +13,7 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
+          context: microk8s
         id: setcontext       
       - uses: azure/setup-kubectl@v1
         with:
