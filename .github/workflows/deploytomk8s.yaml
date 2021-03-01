@@ -19,7 +19,7 @@ jobs:
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
           context: microk8s
         id: setcontext               
-      - uses: Azure/k8s-deploy@v1.2
+      - uses: Azure/k8s-deploy@v1.3
         with:
           manifests: |
             deployment.yaml  
