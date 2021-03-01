@@ -23,5 +23,6 @@ jobs:
         with:
           manifests: |
             deployment.yaml  
+          kubectl-version: 'v1.20.0'
           action: deploy
         id: deploy
