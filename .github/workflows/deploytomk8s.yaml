@@ -19,10 +19,16 @@ jobs:
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
           context: microk8s
         id: setcontext               
-      - uses: Azure/k8s-deploy@v1.3
+      # - uses: Azure/k8s-deploy@v1.3
+      #   with:
+      #     manifests: |
+      #       deployment.yaml  
+      #     kubectl-version: 'v1.20.0'
+      #     action: deploy
+      #   id: deploy
+      - name: Trigger deploy
+        uses: phamquyhai/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.MYKUBECONFIG }}
         with:
-          manifests: |
-            deployment.yaml  
-          kubectl-version: 'v1.20.0'
-          action: deploy
-        id: deploy
+          args: apply deployment.yaml        
