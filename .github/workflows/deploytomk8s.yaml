@@ -13,12 +13,18 @@ jobs:
         with:
           version: 'v1.20.0' # default is latest stable
         id: install             
-      - uses: azure/k8s-set-context@v1
+      # - uses: azure/k8s-set-context@v1
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ secrets.MYKUBECONFIG }}
+      #     context: microk8s
+      #   id: setcontext 
+      - uses: azure  /k8s-set-context@v1
         with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.MYKUBECONFIG }}
-          context: microk8s
-        id: setcontext               
+          method: service-account
+          k8s-url: https://10.11.1.103:16443
+          k8s-secret: £{{ secrets.SERVICE_ACCOUNT_SECRET }}
+        id: setcontext              
       - uses: Azure/k8s-deploy@v1.3
         with:
           manifests: |
