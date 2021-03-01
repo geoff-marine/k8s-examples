@@ -19,7 +19,7 @@ jobs:
       #     kubeconfig: ${{ secrets.MYKUBECONFIG }}
       #     context: microk8s
       #   id: setcontext 
-      - uses: azure  /k8s-set-context@v1
+      - uses: azure/k8s-set-context@v1
         with:
           method: service-account
           k8s-url: https://10.11.1.103:16443
