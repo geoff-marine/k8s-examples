@@ -23,7 +23,7 @@ jobs:
         with:
           method: service-account
           k8s-url: https://10.11.1.103:16443
-          k8s-secret: £{{ secrets.SERVICE_ACCOUNT_SECRET }}
+          k8s-secret: ${{ secrets.SERVICE_ACCOUNT_SECRET }}
         id: setcontext              
       - uses: Azure/k8s-deploy@v1.3
         with:
