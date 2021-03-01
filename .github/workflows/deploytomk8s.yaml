@@ -15,7 +15,7 @@ jobs:
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
         id: setcontext
       - name: Run a one-line script
-        run: echo $KUBE_CONFIG  
+        run: echo ${{ secrets.MYKUBECONFIG }}  
       - uses: azure/setup-kubectl@v1
         with:
           version: 'v1.20.0' # default is latest stable
