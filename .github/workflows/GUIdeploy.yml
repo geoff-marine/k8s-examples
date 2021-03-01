@@ -32,7 +32,13 @@ jobs:
         uses: Azure/k8s-set-context@v1
         with:
           kubeconfig: MYKUBECONFIG
-      
+
+      -name: kubectl get
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.20.0' # default is latest stable
+        id: install
+        
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v1.3
         with:
