@@ -12,22 +12,16 @@ jobs:
       - uses: azure/setup-kubectl@v1
         with:
           version: 'v1.20.0' # default is latest stable
-        id: install   
-      - name: whats my config
-        run: kubectl config view           
+        id: install             
       - uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
           context: microk8s
-        id: setcontext 
-      - name: whats my config 2
-        run: kubectl config view               
+        id: setcontext               
       - uses: Azure/k8s-deploy@v1.2
         with:
           manifests: |
             deployment.yaml  
-          kubectl-version: 'v1.20.0'
-          run: kubectl config view
           action: deploy
         id: deploy
