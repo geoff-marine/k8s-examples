@@ -13,12 +13,7 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.MYKUBECONFIG }}
-        id: setcontext
-      - name: Step 2 - GitHub Action if statement (true)
-        env: 
-          WHO_TO_TRUST: ${{ secrets.MYKUBECONFIG }}
-        if:  env.WHO_TO_TRUST == 'TrustNo1'
-        run: echo "I know what the secret token is!"        
+        id: setcontext       
       - uses: azure/setup-kubectl@v1
         with:
           version: 'v1.20.0' # default is latest stable
