@@ -9,26 +9,26 @@ jobs:
     steps:
       - uses: actions/checkout@master
       
-      # - uses: azure/setup-kubectl@v1
-      #   with:
-      #     version: 'v1.20.0' # default is latest stable
-      #   id: install             
-      # - uses: azure/k8s-set-context@v1
-      #   with:
-      #     method: kubeconfig
-      #     kubeconfig: ${{ secrets.MYKUBECONFIG }}
-      #     context: microk8s
-      #   id: setcontext               
-      # - uses: Azure/k8s-deploy@v1.3
-      #   with:
-      #     manifests: |
-      #       deployment.yaml  
-      #     kubectl-version: 'v1.20.0'
-      #     action: deploy
-      #   id: deploy
-      - name: Trigger deploy
-        uses: phamquyhai/kubernetes-action@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.MYKUBECONFIG }}
+      - uses: azure/setup-kubectl@v1
         with:
-          args: apply deployment.yaml        
+          version: 'v1.20.0' # default is latest stable
+        id: install             
+      - uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.MYKUBECONFIG }}
+          context: microk8s
+        id: setcontext               
+      - uses: Azure/k8s-deploy@v1.3
+        with:
+          manifests: |
+            deployment.yaml  
+          kubectl-version: 'v1.20.0'
+          action: deploy
+        id: deploy
+      # - name: Trigger deploy
+      #   uses: phamquyhai/kubernetes-action@master
+      #   env:
+      #     KUBE_CONFIG_DATA: ${{ secrets.MYKUBECONFIG }}
+      #   with:
+      #     args: apply deployment.yaml        
